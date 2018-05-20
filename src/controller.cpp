@@ -6,6 +6,7 @@
 #include <wiringPiI2C.h>
 
 #include "controller.h"
+#include "Commands.h"
 
 using namespace std;
 
@@ -35,25 +36,29 @@ int main(int argc, char **argv)
   // MOVEMENT
   //
   if (command == "ROTATE") {
-    commands.push(0x10);
+    commands.push(ROTATE);
     commands.push(atoi(argv[2]) & 0xff);
     commands.push(atoi(argv[2]) >> 8);
+
   } else if (command == "TRANSLATE") {
-    commands.push(0x21);
+    commands.push(TRANSLATE);
     commands.push(atoi(argv[2]) & 0xff);
     commands.push(atoi(argv[2]) >> 8);
     commands.push(atoi(argv[3]) & 0xff);
     commands.push(atoi(argv[3]) >> 8);
+
   } else if (command == "TURN") {
-    commands.push(0x11);
+    commands.push(TURN);
     commands.push(atoi(argv[2]) & 0xff);
     commands.push(atoi(argv[2]) >> 8);
+
   } else if (command == "MOVE") {
-    commands.push(0x20);
+    commands.push(MOVE);
     commands.push(atoi(argv[2]) & 0xff);
     commands.push(atoi(argv[2]) >> 8);
     commands.push(atoi(argv[3]) & 0xff);
     commands.push(atoi(argv[3]) >> 8);
+
   }
 
   //
