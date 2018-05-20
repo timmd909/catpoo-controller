@@ -8,6 +8,9 @@ AC_LANG(C++)
 AC_PROG_CC
 AC_PROG_CXX
 
+dnl Check for requirements
+AC_CHECK_HEADERS([wiringPi.h], [], [AC_MSG_ERROR([Unable to find wiringPi header])])
+
 dnl Process Makefile.in to create Makefile
 AC_CONFIG_FILES([
   Makefile

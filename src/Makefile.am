@@ -5,4 +5,5 @@ catpoo_controller_SOURCES = \
   controller.h
 
 catpoo_controller_LDADD = \
-  -lstdc++
+  -lstdc++ \
+  -lwiringPi

@@ -1,5 +1,6 @@
 #ifndef __CATPOO_CONTROLLER_H_
 #define __CATPOO_CONTROLLER_H_
 
+#define ARDUINO_DEVICE_ID 0x45
 
 #endif
