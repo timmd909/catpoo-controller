@@ -6,4 +6,6 @@ catpoo_controller_SOURCES = \
 
 catpoo_controller_LDADD = \
   -lstdc++ \
-  -lwiringPi
+  -lwiringPi \
+  -lrt \
+  -lcrypt
