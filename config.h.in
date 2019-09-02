@@ -3,5 +3,19 @@
 
 #cmakedefine I2C_DEVICE "@I2C_DEVICE@"
 #cmakedefine I2C_ADDR @I2C_ADDR@
+#define SPEED_DEFAULT @SPEED_DEFAULT@
+
+//
+// These speed things shouldn't need touched. I shouldn't need more
+// than 100 different speed levels to make things go smoothly. I don't
+// plan on doing more than using 0, 50, and 100.
+//
+#define SPEED_MIN 0
+#define SPEED_MAX 100
+
+#define VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define VERSION "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@"
 
 #endif

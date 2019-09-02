@@ -1,73 +1,40 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <boost/program_options.hpp>
 
+#include <tclap/CmdLine.h>
 #include "config.h"
+#include "Controller.h"
 #include "I2C.h"
 
 using namespace std;
-namespace po = boost::program_options;
+using namespace TCLAP;
 
 vector<string> commands;
 
-void process_args(int &argc, char **argv)
-{
-  po::options_description generic("Generic Options");
-  po::options_description hidden("Hidden Options");
-  po::options_description visible("Allowed options");
-  po::options_description cmdline_options;
-  po::positional_options_description p;
-
-  po::variables_map vm;
-
-  generic.add_options()
-    ("help", "Show command usage")
-    ("verbose", "Enable verbose output")
-  ;
-
-  hidden.add_options()
-    ("commands", po::value< vector<string> >(), "Commands")
-  ;
-
-  cmdline_options.add(generic).add(hidden);
-
-  visible.add(generic);
-
-  p.add("commands", -1);
-
-  store(
-    po::command_line_parser(argc, argv)
-      .options(cmdline_options)
-      .positional(p)
-      .run(),
-    vm
-  );
-  notify(vm);
-
-  if (vm.count("help"))
-  {
-    cout << visible << endl;
-    exit(1);
-  }
-
-  if (vm.count("commands"))
-  {
-    vector<string> commands = vm["commands"].as< vector<string> >();
-    for (int i = 0; i < commands.size(); i++) {
-      cout << "CMD: " << commands[i] << endl;
-    }
-    // cout << "Commands are: "
-    //   << vm["commands"].as< vector<string> >() << "\n";
-  }
-
-}
+CmdLine commandLine("CATPOO Controller", '=', VERSION);
 
 int main (int argc, char **argv)
 {
   cout << "==== CATPOO Controller ====" << endl;
 
-  process_args(argc, argv);
+  ValueArg<int> xSpeed("X", "x-speed", "X movement speed (0-100)", false, 50, "Vx", commandLine);
+  ValueArg<int> xDistance("x", "x-distance", "X movement distance (negative=left, positive=right)", false, 0, "Dx", commandLine);
+
+  ValueArg<int> ySpeed("Y", "y-speed", "Y movement speed (0-100)", false, 50, "Vy", commandLine);
+  ValueArg<int> yDistance("y", "y-distance", "Y movement distance (negative=backwards, positive=forwards)", false, 0, "Dy", commandLine);
+
+  ValueArg<int> rotSpeed("R", "rot-speed", "Rotation speed (0-100)", false, 50, "Vz", commandLine);
+  ValueArg<int> rotDistance("r", "rot-distance", "Rotation distance (negative=clockwise, positive=counterclockwise)", false, 0, "Dz", commandLine);
+
+  commandLine.parse(argc, argv);
+
+  if (!xDistance.getValue() && !yDistance.getValue() && !rotDistance.getValue()) {
+    cout << "You.... uh... wanted to do something...?\n";
+  } else {
+    cout << "xDistance.getValue() = " << xDistance.getValue() << endl;
+    cout << "yDistance.getValue() = " << yDistance.getValue() << endl;
+  }
 
   I2C::init();
 

@@ -1,4 +1,7 @@
-include_directories( "${PROJECT_BINARY_DIR}" )
+include_directories(
+  "${PROJECT_BINARY_DIR}"
+  "${PROJECT_SOURCE_DIR}/lib/tclap/include/"
+)
 
 add_executable (catpoo_controller
   main.cpp
@@ -8,5 +11,4 @@ add_executable (catpoo_controller
 
 target_link_libraries(catpoo_controller
   stdc++
-  boost_program_options
 )
