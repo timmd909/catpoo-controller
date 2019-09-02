@@ -3,15 +3,15 @@
 
 #define RESET 0x01
 
-#define SPEED_X 0x20
-#define SPEED_Y 0x21
-#define SPEED_ROT 0x22
+#define X_DISTANCE 0x20
+#define X_SPEED 0x21
 
-#define RANGE_0 0x30
-#define RANGE_1 0x31
-#define RANGE_2 0x32
-#define RANGE_3 0x33
-#define RANGE_4 0x34
-#define RANGE_5 0x35
+#define Y_DISTANCE 0x20
+#define Y_SPEED 0x21
+
+#define ROT_DISTANCE 0x30
+#define ROT_SPEED 0x31
+
+#define RANGES 0x40
 
 #endif
