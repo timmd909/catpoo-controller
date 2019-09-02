@@ -14,20 +14,19 @@ using namespace std;
 
 namespace I2C
 {
-  void send(vector<char> byte)
+  void write(vector<char> bytes)
   {
-    // begin transmissions
-    //
-    // send all the bytes
-    //
-    // end transmission
+    for (vector<char>::iterator it = bytes.begin(); it != bytes.end(); it++) {
+      write(*it);
+    }
   }
 
-  void send(char byte)
+  void write(char byte)
   {
-    vector<char> bytes;
-    bytes.push_back(byte);
-    send(bytes);
+    if (Options::verbose.getValue()) {
+      cout << "SEND: " << hex << byte << " (" << dec << byte << ")" << endl;
+    }
+    // implement me here
   }
 
   vector<char> read(int numBytes)

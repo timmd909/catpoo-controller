@@ -5,8 +5,8 @@
 
 namespace I2C
 {
-  void send(char byte);
-  void send(std::vector<char> bytes);
+  void write(char byte);
+  void write(std::vector<char> bytes);
 
   std::vector<char> read(int numBytes);
 }

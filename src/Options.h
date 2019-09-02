@@ -14,7 +14,7 @@ namespace Options
   extern TCLAP::ValueArg<int> rotSpeed;
   extern TCLAP::ValueArg<int> rotDistance;
 
-  extern TCLAP::SwitchArg queryState;
+  extern TCLAP::SwitchArg distances;
   extern TCLAP::SwitchArg verbose;
 }
 
