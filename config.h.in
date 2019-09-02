@@ -1,0 +1,7 @@
+#ifndef __CATPOO_CONTROLLER_CONFIG_H_
+#define __CATPOO_CONTROLLER_CONFIG_H_
+
+#cmakedefine I2C_DEVICE "@I2C_DEVICE@"
+#cmakedefine I2C_ADDR @I2C_ADDR@
+
+#endif
