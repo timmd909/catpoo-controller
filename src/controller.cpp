@@ -72,7 +72,7 @@ int main(int argc, char **argv)
   // SEND THE COMMANDS
   //
   cout << "Sending commands to Arduino\n";
-  int arduino = wiringPiI2CSetup(ARDUINO_DEVICE_ID);
+  int arduino = wiringPiI2CSetup(ARDUINO_I2C_ADDR);
   while (!commands.empty()) {
     int curr = commands.front();
     cout << "Sending 0x" << hex << curr << " (" << dec << curr << ")"<< endl;
