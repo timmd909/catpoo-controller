@@ -97,6 +97,17 @@ int main(int argc, char **argv)
     ;
   }
 
+  commands.push_back(X_DISTANCE);
+  commands.push_back(X_SPEED);
+
+  commands.push_back(Y_DISTANCE);
+  commands.push_back(Y_SPEED);
+
+  commands.push_back(ROT_DISTANCE);
+  commands.push_back(ROT_SPEED);
+
+  I2C::write(commands);
+
   // last but not least, query the range finder distances.
   // We do this last cuz this is the only time we need to
   // receive bytes. All the other commands are one way,
